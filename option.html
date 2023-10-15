@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Network</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Change the font to something more aesthetic */
+        }
+
+        .mind-map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .node {
+            background-color: #3498db;
+            color: white;
+            border: 2px solid #2980b9;
+            padding: 15px 25px;
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .node:hover {
+            background-color: #2980b9;
+        }
+
+        .options, .drug-options, .public-health-options, .surgery-options, .receptor-options {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .option, .drug-option, .public-health-option, .surgery-option, .receptor-option {
+            margin: 0 20px; /* Added spacing between options */
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border: 2px solid #27ae60;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .option:hover, .drug-option:hover, .public-health-option:hover, .surgery-option:hover, .receptor-option:hover {
+            background-color: #27ae60;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mind-map">
+        <button class="node" onclick="toggleOptions('breastCancerOptions')">Breast Cancer</button>
+        <div class="options hidden" id="breastCancerOptions">
+            <button class="public-health-option" onclick="showPublicHealthOptions()">Public Health Data</button>
+            <button class="surgery-option" onclick="showSurgeryOptions()">Surgeries</button>
+            <button class="drug-option" onclick="showDrugOptions()">Drugs</button>
+            <button class="receptor-option" onclick="showReceptorOptions()">Receptors</button>
+        </div>
+        <div class="hidden public-health-options" id="publicHealthOptions">
+            <button class="option" onclick="showContent('Demographic')">Demographic</button>
+            <button class="option" onclick="showContent('Mortality Data')">Mortality Data</button>
+            <button class="option" onclick="showContent('Morbidity Data')">Morbidity Data</button>
+        </div>
+        <div class="hidden surgery-options" id="surgeryOptions">
+            <button class="option" onclick="showContent('Lumpectomy')">Lumpectomy</button>
+            <button class="option" onclick="showContent('Mastectomy')">Mastectomy</button>
+            <button class="option" onclick="showContent('Oophorectomy')">Oophorectomy</button>
+            <button class="option" onclick="showContent('Breast Reconstruction')">Breast Reconstruction</button>
+        </div>
+        <div class="hidden drug-options" id="drugOptions">
+            <button class="drug-option" onclick="showContent('Antisense Nucleotides')">Antisense Nucleotides</button>
+            <button class="drug-option" onclick="showContent('Small Molecules')">Small Molecules</button>
+            <button class="drug-option" onclick="showContent('Peptides')">Peptides</button>
+        </div>
+        <div class="hidden receptor-options" id="receptorOptions">
+            <button class="option" onclick="showContent('ER (Estrogen Receptor)')">ER (Estrogen Receptor)</button>
+            <button class="option" onclick="showContent('PR (Progesterone Receptor)')">PR (Progesterone Receptor)</button>
+            <button class="option" onclick="showContent('HER2 (Human Epidermal Receptor type-2)')">HER2 (Human Epidermal Receptor type-2)</button>
+        </div>
+        <div class="hidden" id="content"></div>
+    </div>
+
+    <script>
+        function toggleOptions(id) {
+            var options = document.getElementById(id);
+            options.classList.toggle('hidden');
+        }
+
+        function showContent(content) {
+            var contentDiv = document.getElementById('content');
+            contentDiv.innerText = 'Content for ' + content;
+        }
+
+        function showDrugOptions() {
+            var drugOptions = document.getElementById('drugOptions');
+            drugOptions.classList.toggle('hidden');
+        }
+
+        function showPublicHealthOptions() {
+            var publicHealthOptions = document.getElementById('publicHealthOptions');
+            publicHealthOptions.classList.toggle('hidden');
+        }
+
+        function showSurgeryOptions() {
+            var surgeryOptions = document.getElementById('surgeryOptions');
+            surgeryOptions.classList.toggle('hidden');
+        }
+
+        function showReceptorOptions() {
+            var receptorOptions = document.getElementById('receptorOptions');
+            receptorOptions.classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>
